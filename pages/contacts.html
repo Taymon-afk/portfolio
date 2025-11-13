@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Портфолио</title>
+        <meta name="description" content="Портфолио студента-разработчика">
+        <link rel="stylesheet" href="../style/styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <img src="../img/logo.png" alt="Логотип" class="header_logo">
+            <h1>Болотаев Артём</h1>
+            <nav class="header_nav">
+                <ul class="header_list">
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="diary.html">Дневник</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main">
+                <h2>Свяжитесь со мной</h2>
+                <section class="connection">
+                    <div class="window-connect">
+                        <div class="pole">
+                            <p class="message-text">Имя:</p>
+                            <input type="text">
+                        </div>
+                        <div class="pole">
+                            <p class="message-text">Email:</p>
+                            <input type="email">
+                        </div>
+                        <div class="message-pole">
+                            <p class="message-message">Сообщение:</p>
+                            <textarea class="message"></textarea>
+                        </div>
+                        <button class="send-message" onclick="clearForm()">Отправить сообщение</button>
+                    </div>
+                </section>
+                <section class="connections">
+                    <p>Контакты:</p>
+                    <p>Почта: <a href="mailto:bolotaev.a.d@edu.mirea.ru" class="links">bolotaev.a.d@edu.mirea.ru</a></p>
+                    <p>GitHub: <a href="https://github.com/Taymon-afk" class="links">Taymon-afk</a></p>
+                    <p>Москва, Россия</p>
+                </section>
+        </main>
+        <footer class="footer">
+            <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>
+        </footer>
+        <script>
+            function clearForm() {
+                const inputs = document.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                alert('Сообщение отправлено!');
+            }
+        </script>
+    </body>
+</html>

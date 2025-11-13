@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Портфолио</title>
+        <meta name="description" content="Портфолио студента-разработчика">
+        <link rel="stylesheet" href="../style/styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <img src="../img/logo.png" alt="Логотип" class="header_logo">
+            <h1>Болотаев Артём</h1>
+            <nav class="header_nav">
+                <ul class="header_list">
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="diary.html">Дневник</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="projects-head">
+            <p class="my-projects">Мои проекты</p>
+            <div class="projects-buttons">
+                <button class="btn active" onclick="filterProjects('all')">Все</button>
+                <button class="btn" onclick="filterProjects('html')">HTML</button>
+                <button class="btn" onclick="filterProjects('js')">JS</button>
+                <button class="btn" onclick="filterProjects('react')">React</button>
+            </div>
+        </section>
+        
+        <section class="projects-main">
+            <div class="project html" onclick="openModal('modal1')">
+                <h3>Личный сайт</h3>
+                <p>HTML, CSS</p>
+            </div>
+            <div class="project js" onclick="openModal('modal2')">
+                <h3>Todo-приложение</h3>
+                <p>JavaScript</p>
+            </div>
+            <div class="project react" onclick="openModal('modal3')">
+                <h3>Интернет-магазин</h3>
+                <p>React</p>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>
+        </footer>
+        <dialog id="modal1" class="modal">
+            <div class="modal-content">
+             <h2>Сайт-портфолио</h2>
+                <p>Мой первый проект - это сайт, на котором вы сейчас находитесь. Тут используется HTML, CSS и JS.</p>
+                <button class="close-btn" onclick="closeModal('modal1')">Закрыть</button>
+            </div>
+        </dialog>
+        <dialog id="modal2" class="modal">
+            <div class="modal-content">
+             <h2>Todo-приложение</h2>
+                <p>Это место для будущего Todo-приложения</p>
+                <button class="close-btn" onclick="closeModal('modal2')">Закрыть</button>
+            </div>
+        </dialog>
+        <dialog id="modal3" class="modal">
+             <div class="modal-content">
+             <h2>Интернет-магазин</h2>
+                <p>Это место для будущего интернет-магазина</p>
+                <button class="close-btn" onclick="closeModal('modal3')">Закрыть</button>
+            </div>
+        </dialog>
+
+        <script>
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.showModal();
+            }
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.close();
+            }
+            document.addEventListener('click', function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.close();
+                    }
+                });                                                             
+            });
+            function filterProjects(category) {
+                const projects = document.querySelectorAll('.project');
+                const buttons = document.querySelectorAll('.btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                projects.forEach(project => {
+                    if (category === 'all' || project.classList.contains(category)) {
+                        project.classList.remove('filtered-out');
+                    } else {
+                        project.classList.add('filtered-out');
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

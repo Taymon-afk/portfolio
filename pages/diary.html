@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Портфолио</title>
+        <meta name="description" content="Портфолио студента-разработчика">
+        <link rel="stylesheet" href="../style/styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <img src="../img/logo.png" alt="Логотип" class="header_logo">
+            <h1>Болотаев Артём</h1>
+            <nav class="header_nav">
+                <ul class="header_list">
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="diary.html">Дневник</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="study-progress">
+                <h2>Мой учебный прогресс</h2>
+                <div class="dates">
+                    <p>15 дек - Верстка макета сайта ✔</p>
+                    <p>10 дек - JavaScript основы ✔</p>
+                    <p>05 дек - Работа с формами in progress</p>
+                    <p>01 дек - Адаптивный дизайн in progress</p>
+                </div>
+            </section>
+            <section class="curses">
+                <h2>Текущие курсы</h2>
+                <div class="progresses">
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">Веб-разработка</p>
+                        <progress class="progress-bar" max="100" value="90"></progress>
+                        <p>90%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">JavaScript</p>
+                        <progress class="progress-bar" max="100" value="80"></progress>
+                        <p>80%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">React</p>
+                        <progress class="progress-bar" max="100" value="60"></progress>
+                        <p>60%</p>
+                    </div>
+                    <button class="add" onclick="openModal('modal-window')">Добавить запись</button>
+                </div>
+            </section>
+            <footer class="footer">
+            <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>
+        </footer>
+        </main>
+        <dialog id="modal-window" class="modal-in-diary">
+            <div class="modal-content">
+                <h2>Добавьте запись</h2>
+                <textarea class="message-in-modal"></textarea>
+                <div class="modal-diary-buttons">
+                    <button class="close-btn" onclick="addNote('modal-window')">Добавить</button>
+                    <button class="close-btn" onclick="closeModal('modal-window')">Закрыть</button>
+                </div>
+            </div>
+        </dialog>
+        <script>
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.showModal();
+            }
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.close();
+            }
+            function addNote(modalId){
+                const modal = document.getElementById(modalId);
+                modal.close();
+                alert("Запись добавлена!");
+            }
+            document.addEventListener('click', function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.close();
+                    }
+                });                                                             
+            });
+        </script>
+    </body>
+</html>

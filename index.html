@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Портфолио</title>
+        <meta name="description" content="Портфолио студента-разработчика">
+        <link rel="stylesheet" href="style/styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <img src="./img/logo.png" alt="Логотип" class="header_logo">
+            <h1>Болотаев Артём</h1>
+            <nav class="header_nav">
+                <ul class="header_list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="pages/projects.html">Проекты</a></li>
+                    <li><a href="pages/diary.html">Дневник</a></li>
+                    <li><a href="pages/contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="profile">
+                <img src="/img/profile.jpg" alt="Аватарка" class="Ava">
+                <div class="info-block">
+                    <p class="info">Привет! Я студент группы ЭФБО-05-24. Увлекаюсь веб-разработкой.</p>
+                    <a href="assets/resume.pdf" download="Мое_резюме.pdf"><button class="download">Скачать резюме</button></a>
+                </div>
+            </section>
+            <section class="skills">
+                <h2>Мои навыки</h2>
+                <div class="progresses">
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">HTML/CSS</p>
+                        <progress class="progress-bar" max="100" value="90"></progress>
+                        <p>90%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">JavaScript</p>
+                        <progress class="progress-bar" max="100" value="80"></progress>
+                        <p>80%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">Bootstrap</p>
+                        <progress class="progress-bar" max="100" value="85"></progress>
+                        <p>85%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <p class="skill-bar-text">React</p>
+                        <progress class="progress-bar" max="100" value="60"></progress>
+                        <p>60%</p>
+                    </div>
+                </div>
+            </section>
+            <section class="all-project">
+                <div class="my-projects">
+                    <h2>Лучшие проекты</h2>
+                    <div class="projects">
+                        <div proj-pole>
+                            <img src="./img/sayt.png" class="pr" onclick="openModal('modal1')" alt="Сайт-портфолио">
+                            <h2>Сайт-портфолио</h2>
+                        </div>
+                        <div proj-pole>
+                            <img src="./img/shop.jpg" class="pr" onclick="openModal('modal2')" alt="Интернет-магазин">
+                            <h2>Интернет-магазин</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <footer class="footer">
+                <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>
+            </footer>
+        </main>
+        <dialog id="modal1" class="modal">
+            <div class="modal-content">
+                <h2>Сайт-портфолио</h2>
+                <p>Мой первый проект - это сайт, на котором вы сейчас находитесь. Тут используется HTML, CSS и JS.</p>
+                <button class="close-btn" onclick="closeModal('modal1')">Закрыть</button>
+            </div>
+        </dialog>
+        <dialog id="modal2" class="modal">
+            <div class="modal-content">
+                <h2>Интернет-магазин</h2>
+                <p>Второй мой проект - интернет магазин. Его было сложно создать, но я справился!</p>
+                <button class="close-btn" onclick="closeModal('modal2')">Закрыть</button>
+            </div>
+        </dialog>
+        <script>
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.showModal();
+            }
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.close();
+            }
+            document.addEventListener('click', function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.close();
+                    }
+                });                                                             
+            });
+        </script>
+    </body>
+</html>
