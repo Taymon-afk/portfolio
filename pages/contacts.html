@@ -54,12 +54,30 @@
         </footer>
         <script>
             function clearForm() {
-                const inputs = document.querySelectorAll('input, textarea');
-                inputs.forEach(input => {
-                    input.value = '';
-                });
+                const nameInput = document.querySelector('input[type="text"]');
+                const emailInput = document.querySelector('input[type="email"]');
+                const messageInput = document.querySelector('textarea');
+                if (nameInput.value.trim() === '') {
+                    alert('Пожалуйста, введите ваше имя!');
+                    nameInput.focus();
+                    return;
+                }
+                if (emailInput.value.trim() === '') {
+                    alert('Пожалуйста, введите ваш email!');
+                    emailInput.focus();
+                    return;
+                }
+                if (messageInput.value.trim() === '') {
+                    alert('Пожалуйста, введите сообщение!');
+                    messageInput.focus();
+                    return;
+                }
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
                 alert('Сообщение отправлено!');
             }
+
         </script>
     </body>
 </html>

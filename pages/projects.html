@@ -23,7 +23,7 @@
                 </ul>
             </nav>
         </header>
-        
+        <div class="main-body">
         <section class="projects-head">
             <p class="my-projects">Мои проекты</p>
             <div class="projects-buttons">
@@ -36,19 +36,22 @@
         
         <section class="projects-main">
             <div class="project html" onclick="openModal('modal1')">
+                <img src="../img/sayt.png" class="project-photo" alt="Сайт-портфолио">
                 <h3>Личный сайт</h3>
                 <p>HTML, CSS</p>
             </div>
             <div class="project js" onclick="openModal('modal2')">
+                <img src="../img/todo.png" class="project-photo" alt="Todo-приложение">
                 <h3>Todo-приложение</h3>
                 <p>JavaScript</p>
             </div>
             <div class="project react" onclick="openModal('modal3')">
+                <img src="../img/shop.jpg" class="project-photo" alt="Интернет-магазин">
                 <h3>Интернет-магазин</h3>
                 <p>React</p>
             </div>
         </section>
-        
+        </div>
         <footer class="footer">
             <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>
         </footer>
@@ -93,14 +96,14 @@
             });
             function filterProjects(category) {
                 const projects = document.querySelectorAll('.project');
-                const buttons = document.querySelectorAll('.btn');
+                const buttons = document.querySelectorAll('.btn'); 
                 buttons.forEach(btn => btn.classList.remove('active'));
                 event.target.classList.add('active');
                 projects.forEach(project => {
+                    project.classList.add('hidden');
+                    
                     if (category === 'all' || project.classList.contains(category)) {
-                        project.classList.remove('filtered-out');
-                    } else {
-                        project.classList.add('filtered-out');
+                        project.classList.remove('hidden');
                     }
                 });
             }
