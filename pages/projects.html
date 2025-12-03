@@ -5,12 +5,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <title>Портфолио</title>
-        <meta name="description" content="Портфолио студента-разработчика">
         <link rel="stylesheet" href="../style/styles.css">
     </head>
     <body>
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a>
         <header class="header">
             <img src="../img/logo.png" alt="Логотип" class="header_logo">
             <h1>Болотаев Артём</h1>
@@ -23,34 +23,51 @@
                 </ul>
             </nav>
         </header>
-        <div class="main-body">
-        <section class="projects-head">
-            <p class="my-projects">Мои проекты</p>
-            <div class="projects-buttons">
-                <button class="btn active" onclick="filterProjects('all')">Все</button>
-                <button class="btn" onclick="filterProjects('html')">HTML</button>
-                <button class="btn" onclick="filterProjects('js')">JS</button>
-                <button class="btn" onclick="filterProjects('react')">React</button>
+        <div class="main-body" id="main">
+            <section class="projects-head">
+                <p class="my-projects">Мои проекты</p>
+                <div class="projects-buttons">
+                    <button class="btn active" onclick="filterProjects('all')">Все</button>
+                    <button class="btn" onclick="filterProjects('html')">HTML</button>
+                    <button class="btn" onclick="filterProjects('js')">JS</button>
+                    <button class="btn" onclick="filterProjects('react')">React</button>
+                </div>
+            </section>
+            
+            <div class="projects-container">
+                <section class="projects-main">
+                    <div class="project html" onclick="openModal('modal1')">
+                        <picture>
+                            <source srcset="../img/sayt.webp" type="image/webp">
+                            <img src="../img/sayt.png" class="project-photo" 
+                                alt="Сайт-портфолио"
+                                width="300" height="200">
+                        </picture>
+                        <h3>Личный сайт</h3>
+                        <p>HTML, CSS</p>
+                    </div>
+                    <div class="project js" onclick="openModal('modal2')">
+                        <picture>
+                            <source srcset="../img/todo.webp" type="image/webp">
+                            <img src="../img/todo.png" class="project-photo" 
+                                alt="Todo-приложение"
+                                width="300" height="200">
+                        </picture>
+                        <h3>Todo-приложение</h3>
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="project react" onclick="openModal('modal3')">
+                        <picture>
+                            <source srcset="../img/shop.webp" type="image/webp">
+                            <img src="../img/shop.jpg" class="project-photo" 
+                                alt="Интернет-магазин"
+                                width="300" height="200">
+                        </picture>
+                        <h3>Интернет-магазин</h3>
+                        <p>React</p>
+                    </div>
+                </section>
             </div>
-        </section>
-        
-        <section class="projects-main">
-            <div class="project html" onclick="openModal('modal1')">
-                <img src="../img/sayt.png" class="project-photo" alt="Сайт-портфолио">
-                <h3>Личный сайт</h3>
-                <p>HTML, CSS</p>
-            </div>
-            <div class="project js" onclick="openModal('modal2')">
-                <img src="../img/todo.png" class="project-photo" alt="Todo-приложение">
-                <h3>Todo-приложение</h3>
-                <p>JavaScript</p>
-            </div>
-            <div class="project react" onclick="openModal('modal3')">
-                <img src="../img/shop.jpg" class="project-photo" alt="Интернет-магазин">
-                <h3>Интернет-магазин</h3>
-                <p>React</p>
-            </div>
-        </section>
         </div>
         <footer class="footer">
             <p class="footer_text">© 2025 <a href="mailto:artm.bolotayev@mail.ru" class="email">artm.bolotayev@mail.ru</a></p>

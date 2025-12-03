@@ -5,12 +5,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap" rel="stylesheet">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <title>Портфолио</title>
-        <meta name="description" content="Портфолио студента-разработчика">
         <link rel="stylesheet" href="style/styles.css">
     </head>
     <body>
+        <a class="skip-link" href="#main">Перейти к основному содержимому</a>
         <header class="header">
             <img src="./img/logo.png" alt="Логотип" class="header_logo">
             <h1>Болотаев Артём</h1>
@@ -18,12 +18,12 @@
                 <ul class="header_list">
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="pages/projects.html">Проекты</a></li>
-                    <li><a href="pages/diary.html">Дневник</a></li>
+                    <li><a href="pa ges/diary.html">Дневник</a></li>
                     <li><a href="pages/contacts.html">Контакты</a></li>
                 </ul>
             </nav>
         </header>
-        <main class="main">
+        <main class="main" id="main">
             <section class="profile">
                 <img src="img/profile.jpg" alt="Аватарка" class="Ava">
                 <div class="info-block">
@@ -57,18 +57,28 @@
                 </div>
             </section>
             <section class="all-project">
-                <div class="my-projects">
-                    <h2>Лучшие проекты</h2>
-                    <div class="projects">
-                        <div proj-pole>
-                            <img src="./img/sayt.png" class="pr" onclick="openModal('modal1')" alt="Сайт-портфолио">
-                            <h2>Сайт-портфолио</h2>
-                        </div>
-                        <div proj-pole>
-                            <img src="./img/shop.jpg" class="pr" onclick="openModal('modal2')" alt="Интернет-магазин">
-                            <h2>Интернет-магазин</h2>
-                        </div>
-
+                <div class="projects">
+                    <div proj-pole>
+                        <picture>
+                            <source srcset="./img/sayt.webp" type="image/webp">
+                            <img src="./img/sayt.png" class="pr" 
+                                onclick="openModal('modal1')" 
+                                alt="Сайт-портфолио"
+                                width="500" height="510"
+                                loading="lazy">
+                        </picture>
+                        <h2>Сайт-портфолио</h2>
+                    </div>
+                    <div proj-pole>
+                        <picture>
+                            <source srcset="./img/shop.webp" type="image/webp">
+                            <img src="./img/shop.jpg" class="pr" 
+                                onclick="openModal('modal2')" 
+                                alt="Интернет-магазин"
+                                width="500" height="510"
+                                loading="lazy">
+                        </picture>
+                        <h2>Интернет-магазин</h2>
                     </div>
                 </div>
             </section>

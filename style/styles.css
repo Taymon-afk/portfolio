@@ -4,13 +4,31 @@ body{
     background: linear-gradient(45deg, #0a0a0a 0%, #1a1a1a 25%, #000000 50%, #1a1a1a 75%, #0a0a0a 100%);
     font-family: "Momo Trust Sans", sans-serif;
     min-height: 100vh;
-    display: flex;          /* Добавьте это */
+    display: flex;          
     flex-direction: column;
+    font: 16px/1.6 system-ui, sans-serif;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
 }
+
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.main {
+    padding-inline: clamp(1rem, 5vw, 3rem);
+}
+
+main {flex: 1;}
 
 li, .download, .pr, .add, .project {
     color: #d6d0d0;
     transition: all 0.3s ease;
+}
+
+.pr, .project-photo, .Ava {
+    object-fit: cover;
 }
 
 li:hover, .download:hover, .pr:hover, .add:hover, .project:hover {
@@ -19,12 +37,14 @@ li:hover, .download:hover, .pr:hover, .add:hover, .project:hover {
 }
 
 .header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-left: calc(1rem + env(safe-area-inset-left));
+    padding-right: calc(1rem + env(safe-area-inset-right));
+    background: #0a0a0a;
+    z-index: 100;
+    isolation: isolate;
 }
 
 .header_nav {
@@ -32,6 +52,11 @@ li:hover, .download:hover, .pr:hover, .add:hover, .project:hover {
     border-bottom: 1px solid #d6d0d0;
     justify-self: center;  
     width: 100%;  
+}
+
+.download, .add, .send-message, .btn {
+    width: clamp(120px, 20vw, 150px);
+    height: clamp(40px, 8vw, 50px);
 }
 
 .header_logo{
@@ -79,8 +104,8 @@ ul{
 }
 
 .Ava{
-    width: 500px;
-    height: 450px;
+    width: clamp(250px, 50vw, 500px);
+    height: clamp(225px, 45vw, 450px);
     animation: fadeIn 2s;
 }
 
@@ -167,7 +192,8 @@ progress::-webkit-progress-value {
 .pr{
     border: 1px solid #d6d0d0;
     width: 500px;
-    height: 510px;
+    width: clamp(250px, 50vw, 500px);
+    height: clamp(255px, 51vw, 510px);
     cursor: pointer;
 }
 
@@ -220,10 +246,19 @@ progress::-webkit-progress-value {
     animation: glow 2s infinite alternate;
 }
 
+:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.skip-link:focus-visible {
+    inset-block-start: 1rem;
+}
+
 .footer{
     text-align: center;
     border-top: 1px solid #d6d0d0;
-    
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
 }
 
 .dates{
@@ -298,10 +333,33 @@ input[type="text"], input[type="email"]{
     padding-right: 50px;
 }
 
+input[type="text"], input[type="email"] {
+    width: clamp(200px, 60vw, 300px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-main {
+        grid-template-columns: 1fr;
+    }
+}
+
 .message{
     margin-top: 15px;
     height: 100px;
-    width: 450px;
+    width: clamp(250px, 70vw, 450px);
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
@@ -324,7 +382,7 @@ input[type="text"], input[type="email"]{
     align-items: center;
     gap: 20px;
     font-size:x-large;
-    width: 500px;
+    width: clamp(300px, 90vw, 500px);
     padding: 40px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.1);
@@ -410,11 +468,30 @@ input[type="text"], input[type="email"]{
 }
 
 .projects-main{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+@supports (container-type: inline-size) {
+    .projects-container {
+        container-type: inline-size;
+        container-name: projects;
+    }
+    
+    @container projects (min-width: 640px) {
+        .projects-main {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @container projects (min-width: 960px) {
+        .projects-main {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
 }
 
 .project-photo {
@@ -460,6 +537,23 @@ input[type="text"], input[type="email"]{
 
 .pole input{
     font-size: 20px;
+}
+
+.skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 10000;
+    padding: .5rem .75rem;
+    background: #111;
+    color: #fff;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    inset-block-start: 1rem;
 }
 
 @keyframes fadeIn {
